@@ -1,0 +1,245 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Print styles */
+@media print {
+  * {
+    -webkit-print-color-adjust: exact !important;
+    color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  /* Hide non-essential elements */
+  .print\:hidden {
+    display: none !important;
+  }
+
+  /* Hide header and navigation */
+  header,
+  nav,
+  .print\:hidden,
+  button:not(.quotation-document button) {
+    display: none !important;
+  }
+
+  /* Clean up quotation document for print */
+  .quotation-document {
+    box-shadow: none !important;
+    margin: 0 !important;
+  }
+
+  body {
+    background: white !important;
+  }
+
+  /* Ensure proper page breaks */
+  .page-break-before {
+    page-break-before: always;
+  }
+
+  .page-break-after {
+    page-break-after: always;
+  }
+
+  .page-break-inside-avoid {
+    page-break-inside: avoid;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a1a1a1;
+}
+
+/* Animation classes */
+.fade-in {
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.slide-in {
+  animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+/* Gradient backgrounds */
+.gradient-bg {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.gradient-blue {
+  background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+}
+
+/* Custom form styles */
+.form-input {
+  @apply w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors;
+}
+
+.form-select {
+  @apply w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-white transition-colors;
+}
+
+.btn-primary {
+  @apply bg-gradient-to-r from-blue-600 to-blue-700 text-white py-2 px-4 rounded-md font-semibold hover:from-blue-700 hover:to-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all duration-200;
+}
+
+.btn-secondary {
+  @apply bg-gray-100 text-gray-700 py-2 px-4 rounded-md font-semibold hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 transition-all duration-200;
+}
+
+/* Card styles */
+.card {
+  @apply bg-white rounded-lg shadow-lg p-6;
+}
+
+.card-hover {
+  @apply bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow duration-200 cursor-pointer;
+}
+
+/* Loading spinner */
+.spinner {
+  @apply animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600;
+}
+
+/* Table styles for quotation */
+.quotation-table {
+  @apply w-full border-collapse border border-gray-300;
+}
+
+.quotation-table th,
+.quotation-table td {
+  @apply border border-gray-300 px-4 py-3;
+}
+
+.quotation-table th {
+  @apply bg-blue-50 font-semibold text-gray-900 text-left;
+}
+
+.quotation-table tbody tr:hover {
+  @apply bg-gray-50;
+}
+
+/* Responsive text */
+@screen sm {
+  .responsive-text {
+    font-size: 0.875rem;
+  }
+}
+
+@screen md {
+  .responsive-text {
+    font-size: 1rem;
+  }
+}
+
+@screen lg {
+  .responsive-text {
+    font-size: 1.125rem;
+  }
+}
+
+/* Custom checkbox styles */
+.custom-checkbox {
+  @apply w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500;
+}
+
+/* Step indicator custom styles */
+.step-circle {
+  @apply flex items-center justify-center w-10 h-10 rounded-full border-2 font-semibold transition-all duration-200;
+}
+
+.step-circle.completed {
+  @apply bg-green-500 border-green-500 text-white;
+}
+
+.step-circle.current {
+  @apply bg-blue-500 border-blue-500 text-white;
+}
+
+.step-circle.pending {
+  @apply bg-gray-200 border-gray-300 text-gray-500;
+}
+
+.step-connector {
+  @apply mx-4 h-1 w-16 rounded transition-colors duration-200;
+}
+
+.step-connector.completed {
+  @apply bg-green-500;
+}
+
+.step-connector.pending {
+  @apply bg-gray-200;
+}
+
+/* Expandable section animations */
+.expand-enter {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-out;
+}
+
+.expand-enter-active {
+  max-height: 1000px;
+}
+
+.expand-exit {
+  max-height: 1000px;
+  overflow: hidden;
+  transition: max-height 0.3s ease-in;
+}
+
+.expand-exit-active {
+  max-height: 0;
+}
+
+/* Price input styles */
+.price-input {
+  @apply w-32 px-2 py-1 text-sm border border-gray-300 rounded focus:outline-none focus:ring-1 focus:ring-blue-500;
+}
+
+/* Service card styles */
+.service-card {
+  @apply relative cursor-pointer rounded-lg p-6 border-2 transition-all duration-200 hover:shadow-md;
+}
+
+.service-card.selected {
+  @apply border-blue-500 bg-blue-50 shadow-lg scale-105;
+}
+
+.service-card.unselected {
+  @apply border-gray-200 hover:border-gray-300;
+}
